@@ -1,3 +1,29 @@
-@use "./styles/partials/reset" as *;
+@use './styles/partials/reset' as *;
 @import "./styles/partials/variables";
 @import "./styles/partials/mixins";
+
+* {
+  font-size: 16px;
+}
+body {
+  font-family: $main-font-regular;
+}
+
+.App {
+
+  .responses {
+    @include widthSection;
+    margin: 0 auto;
+    @include display-flex(column,center,center);
+    @include tablet {
+      @include display-flex(column, center, flex-start);
+    }
+    &__title {
+      font-size: 20px;
+      margin-bottom: 2rem;
+    }
+    &__list {
+      width: 100%;
+    }
+  }
+}

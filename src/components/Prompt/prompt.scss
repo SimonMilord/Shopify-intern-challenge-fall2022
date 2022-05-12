@@ -1,0 +1,35 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+.prompt {
+  @include display-flex(column,center,center);
+  padding: 1rem;
+  // @include widthSection;
+  &__form {
+    @include widthSection;
+    width: 100%;
+    @include display-flex(column,center,center);
+  }
+  &__textarea {
+    width: 100%;
+    resize: none;
+    padding: 10px;
+    height: 30vh;
+    font-family: $main-font-regular;
+    // font-size: 16px;
+    margin-bottom: 1rem;
+  }
+  //added extra support across browsers
+  &__textarea::-webkit-input-placeholder {
+    font-family: $main-font-regular, Arial, Helvetica, sans-serif;
+  }
+  &__textarea:-ms-input-placeholder {
+    font-family: $main-font-regular, Arial, Helvetica, sans-serif;
+  }
+  &__textarea:-moz-placeholder {
+    font-family: $main-font-regular, Arial, Helvetica, sans-serif;
+  }
+  &__textarea::-moz-placeholder {
+    font-family: $main-font-regular, Arial, Helvetica, sans-serif;
+  }
+}
