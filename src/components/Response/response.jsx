@@ -2,9 +2,11 @@ import React from 'react';
 import './response.scss';
 
 export default function Response(props) {
+
   const string = props.res;
   let formattedPrompt = string.substring(string.indexOf("You:"),string.indexOf("Marv:")).split(":")[1].trim();
   let formattedResponse = string.substring(string.indexOf("Marv:"),string.length).split(":")[1].trim();;
+
   return (
     <div className='response'>
       <div className='response__top'>

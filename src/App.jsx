@@ -1,3 +1,5 @@
+// import '@shopify/polaris/build/esm/styles.css';
+// import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 import "./App.scss";
 import Header from "./components/Header/header";
 import Prompt from "./components/Prompt/prompt";
@@ -11,16 +13,32 @@ const marvPrompt =
 export default function App() {
   const [prompt, setPrompt] = useState("");
   const [responses, setResponses] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    let resArray = JSON.parse(localStorage.getItem("responses"));
+    if (resArray) {
+      setResponses(resArray);
+    }
+  }, []);
 
   const handlePrompt = async (prompt) => {
+    setIsLoading(true);
     await setPrompt(prompt);
-    getAnswer(prompt);
+    await getAnswer(prompt);
+    localStorage.setItem("responses", JSON.stringify(responses));
+    setIsLoading(false);
+  };
+
+  const handleClear = async () => {
+    await setResponses([]);
+    localStorage.removeItem('responses');
   };
 
   const getAnswer = async (prompt) => {
+
     const data = {
       prompt: `${marvPrompt}${prompt}`,
-      // prompt: `${prompt}`,
       temperature: 0.6,
       max_tokens: 64,
       echo: true,
@@ -40,10 +58,11 @@ export default function App() {
           },
         }
       )
-      .then(async(res) => {
-        await setResponses(responses => [res.data.choices[0].text,...responses] );
-        console.log(res.data.choices[0].text);
-        console.log(responses);
+      .then(async (res) => {
+        await setResponses((responses) => [
+          res.data.choices[0].text,
+          ...responses,
+        ]);
       })
       .catch((err) => {
         console.log(err);
@@ -53,7 +72,7 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <Prompt getPrompt={handlePrompt} />
+      <Prompt getPrompt={handlePrompt} isLoading={isLoading} />
       <section className="responses">
         <h2 className="responses__title">Responses</h2>
         <ul className="responses__list">
@@ -63,6 +82,19 @@ export default function App() {
             </li>
           ))}
         </ul>
+        {responses[0] === undefined ? (
+          <div className="noclear"></div>
+        ) : (
+          <div className="clear">
+            <button
+              className="responses__clear"
+              type="button"
+              onClick={handleClear}
+            >
+              Clear
+            </button>
+          </div>
+        )}
       </section>
     </div>
   );

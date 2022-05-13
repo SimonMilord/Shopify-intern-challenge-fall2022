@@ -19,8 +19,7 @@ body {
       @include display-flex(column, center, flex-start);
     }
     &__title {
-      font-size: 20px;
-      margin-bottom: 2rem;
+      @include title;
     }
     &__list {
       width: 100%;
@@ -29,6 +28,17 @@ body {
     &__item {
       background-color: lightgray;
       margin-bottom: 1rem;
+    }
+    .clear {
+      @include display-flex(row,center,center);
+      width: 100%;
+      margin: 2rem 0rem;
+      position: relative;
+      bottom: 0;
+    }
+    .noclear {
+      @extend .clear;
+      display: none;
     }
   }
 }
