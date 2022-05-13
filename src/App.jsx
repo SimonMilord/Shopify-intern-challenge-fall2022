@@ -10,7 +10,7 @@ const marvPrompt =
 
 export default function App() {
   const [prompt, setPrompt] = useState("");
-  const [response, setResponse] = useState(""); // to change later to arr
+  const [responses, setResponses] = useState([]);
 
   const handlePrompt = async (prompt) => {
     await setPrompt(prompt);
@@ -20,8 +20,10 @@ export default function App() {
   const getAnswer = async (prompt) => {
     const data = {
       prompt: `${marvPrompt}${prompt}`,
+      // prompt: `${prompt}`,
       temperature: 0.6,
       max_tokens: 64,
+      echo: true,
       top_p: 1.0,
       frequency_penalty: 0.0,
       presence_penalty: 0.0,
@@ -38,9 +40,10 @@ export default function App() {
           },
         }
       )
-      .then((res) => {
-        setResponse(res.data.choices[0].text);
+      .then(async(res) => {
+        await setResponses(responses => [res.data.choices[0].text,...responses] );
         console.log(res.data.choices[0].text);
+        console.log(responses);
       })
       .catch((err) => {
         console.log(err);
@@ -54,9 +57,11 @@ export default function App() {
       <section className="responses">
         <h2 className="responses__title">Responses</h2>
         <ul className="responses__list">
-          <li className="responses__item">
-            <Response prompt={prompt} res={response} />
-          </li>
+          {responses.map((item, index) => (
+            <li className="responses__item" key={index}>
+              <Response res={item} />
+            </li>
+          ))}
         </ul>
       </section>
     </div>
