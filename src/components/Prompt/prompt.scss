@@ -32,4 +32,13 @@
   &__textarea::-moz-placeholder {
     font-family: $main-font-regular, Arial, Helvetica, sans-serif;
   }
+  &__buttons {
+    width: 100%;
+    @include display-flex(row,space-around,center);
+
+    button {
+      width: 6.5625rem;
+    }
+  }
+
 }
