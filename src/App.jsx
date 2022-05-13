@@ -1,101 +1,38 @@
 // import '@shopify/polaris/build/esm/styles.css';
 // import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 import "./App.scss";
-import Header from "./components/Header/header";
-import Prompt from "./components/Prompt/prompt";
-import Response from "./components/Response/response";
-import axios from "axios";
-import { useState, useEffect } from "react";
-
-const marvPrompt =
-  "Marv is a chatbot that reluctantly answers questions with sarcastic responses: You: ";
+import Main from "./pages/main/Main";
+import Harry from "./pages/harry/Harry";
+import Marv from "./pages/marv/Marv";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
-  const [prompt, setPrompt] = useState("");
-  const [responses, setResponses] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    let resArray = JSON.parse(localStorage.getItem("responses"));
-    if (resArray) {
-      setResponses(resArray);
-    }
-  }, []);
-
-  const handlePrompt = async (prompt) => {
-    setIsLoading(true);
-    await setPrompt(prompt);
-    await getAnswer(prompt);
-    localStorage.setItem("responses", JSON.stringify(responses));
-    setIsLoading(false);
-  };
-
-  const handleClear = async () => {
-    await setResponses([]);
-    localStorage.removeItem('responses');
-  };
-
-  const getAnswer = async (prompt) => {
-
-    const data = {
-      prompt: `${marvPrompt}${prompt}`,
-      temperature: 0.6,
-      max_tokens: 64,
-      echo: true,
-      top_p: 1.0,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
-    };
-
-    const res = await axios
-      .post(
-        "https://api.openai.com/v1/engines/text-curie-001/completions",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-          },
-        }
-      )
-      .then(async (res) => {
-        await setResponses((responses) => [
-          res.data.choices[0].text,
-          ...responses,
-        ]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
-    <div className="App">
-      <Header />
-      <Prompt getPrompt={handlePrompt} isLoading={isLoading} />
-      <section className="responses">
-        <h2 className="responses__title">Responses</h2>
-        <ul className="responses__list">
-          {responses.map((item, index) => (
-            <li className="responses__item" key={index}>
-              <Response res={item} />
-            </li>
-          ))}
-        </ul>
-        {responses[0] === undefined ? (
-          <div className="noclear"></div>
-        ) : (
-          <div className="clear">
-            <button
-              className="responses__clear"
-              type="button"
-              onClick={handleClear}
-            >
-              Clear
-            </button>
-          </div>
-        )}
-      </section>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={(routerProps) => <Main {...routerProps} />}
+          />
+          <Route
+            path="/marv"
+            exact
+            render={(routerProps) => <Marv {...routerProps} />}
+          />
+          <Route
+            path="/harry"
+            exact
+            render={(routerProps) => <Harry {...routerProps} />}
+          />
+          <Route
+            path="*"
+            exact
+            render={(routerProps) => <Main {...routerProps} />}
+          />
+        </Switch>
+      </Router>
+    </>
   );
 }

@@ -23,7 +23,10 @@ export default function Prompt(props) {
 
   return (
     <section className="prompt">
-      <h2 className="prompt__title">Enter a prompt for Marv</h2>
+      {props.marv ?
+        <h2 className="prompt__title">{props.marv.subtitle}</h2> :
+        <h2 className="prompt__title">{props.harry.subtitle}</h2>
+    }
       <form className="prompt__form" onSubmit={handleSubmit}>
         <textarea
           className="prompt__textarea"
