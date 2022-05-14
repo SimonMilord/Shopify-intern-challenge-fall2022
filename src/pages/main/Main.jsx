@@ -8,11 +8,15 @@ export default function Main(props) {
 
   return (
     <div className="main">
+      <div className="main__instructions">
+        <h1 className="main__title">Welcome to GPT-3 Bot-pedia</h1>
+        <h2 className="main__subtitle">Please choose a bot</h2>
+      </div>
       <section className="card-box">
-        <Link to="/marv">
+        <Link to="/marv" className="cardLink">
           <BotCard name={"Marv"} />
         </Link>
-        <Link to="/harry">
+        <Link to="/harry" className="cardLink">
           <BotCard name={"Harry"} />
         </Link>
       </section>

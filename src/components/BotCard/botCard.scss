@@ -2,4 +2,17 @@
 @import "../../styles/partials/variables";
 
 .card {
+  @include display-flex(column,center,center);
+  // background-color: purple;
+  border: 1px solid black;
+  border-radius: 4px;
+  min-width: 15rem;
+  min-height: 20rem;
+  transition: 0.3s all ease;
+  &__name {
+    text-decoration: none;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
 }
