@@ -15,6 +15,7 @@ const marvProfile = {
 };
 
 export default function Marv(props) {
+  const [missingPrompt, setMissingPrompt] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [responses, setResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -27,11 +28,16 @@ export default function Marv(props) {
   }, []);
 
   const handlePrompt = async (prompt) => {
-    setIsLoading(true);
-    await setPrompt(prompt);
-    await getAnswer(prompt);
-    localStorage.setItem("responses-marv", JSON.stringify(responses));
-    setIsLoading(false);
+    if (prompt === "") {
+      setMissingPrompt(true);
+    } else {
+      setMissingPrompt(false);
+      setIsLoading(true);
+      await setPrompt(prompt);
+      await getAnswer(prompt);
+      localStorage.setItem("responses-marv", JSON.stringify(responses));
+      setIsLoading(false);
+    }
   };
 
   const handleClear = async () => {
@@ -78,10 +84,15 @@ export default function Marv(props) {
       <Prompt
         getPrompt={handlePrompt}
         isLoading={isLoading}
+        missingPrompt={missingPrompt}
         marv={marvProfile}
       />
       <section className="responses">
-        <h2 className="responses__title">Responses</h2>
+        {responses[0] === undefined ? (
+          <></>
+          ) :
+          <h2 className="responses__title">Responses</h2>
+          }
         <ul className="responses__list">
           {responses.map((item, index) => (
             <li className="responses__item" key={index}>

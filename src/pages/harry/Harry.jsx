@@ -11,10 +11,11 @@ import { useState, useEffect } from "react";
 const harryProfile = {
   name: "Harry",
   title: "Harry, the (more useful) bot",
-  subtitle: "Enter a prompt for Harry"
-}
+  subtitle: "Enter a prompt for Harry",
+};
 
 export default function Harry(props) {
+  const [missingPrompt, setMissingPrompt] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [responses, setResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -27,20 +28,25 @@ export default function Harry(props) {
   }, []);
 
   const handlePrompt = async (prompt) => {
-    setIsLoading(true);
-    await setPrompt(prompt);
-    await getAnswer(prompt);
-    localStorage.setItem("responses-harry", JSON.stringify(responses));
-    setIsLoading(false);
+    if (prompt === "") {
+      // alert("Please enter a prompt");
+      setMissingPrompt(true);
+    } else {
+      setMissingPrompt(false);
+      setIsLoading(true);
+      await setPrompt(prompt);
+      await getAnswer(prompt);
+      localStorage.setItem("responses-harry", JSON.stringify(responses));
+      setIsLoading(false);
+    }
   };
 
   const handleClear = async () => {
     await setResponses([]);
-    localStorage.removeItem('responses-harry');
+    localStorage.removeItem("responses-harry");
   };
 
   const getAnswer = async (prompt) => {
-
     const data = {
       prompt: `${prompt}`,
       temperature: 0,
@@ -75,17 +81,23 @@ export default function Harry(props) {
   document.title = `${harryProfile.title}`;
   return (
     <div className="harry">
-      <Header harry={harryProfile}/>
-      <Prompt getPrompt={handlePrompt}
-      isLoading={isLoading}
-      harry={harryProfile}
+      <Header harry={harryProfile} />
+      <Prompt
+        getPrompt={handlePrompt}
+        isLoading={isLoading}
+        missingPrompt={missingPrompt}
+        harry={harryProfile}
       />
       <section className="responses">
-        <h2 className="responses__title">Responses</h2>
+        {responses[0] === undefined ? (
+          <></>
+        ) : (
+          <h2 className="responses__title">Responses</h2>
+        )}
         <ul className="responses__list">
           {responses.map((item, index) => (
             <li className="responses__item" key={index}>
-              <Response res={item} profile={harryProfile}/>
+              <Response res={item} profile={harryProfile} />
             </li>
           ))}
         </ul>

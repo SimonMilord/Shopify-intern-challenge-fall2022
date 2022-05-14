@@ -13,6 +13,15 @@
     width: 100%;
     @include display-flex(column,center,center);
   }
+  &__error {
+    color: $err-color;
+    margin-bottom: 0.5rem;
+    visibility: visible;
+    &--hidden {
+      visibility: hidden;
+      margin-bottom: 0.5rem;
+    }
+  }
   &__textarea {
     width: 100%;
     resize: none;
@@ -20,6 +29,11 @@
     height: 30vh;
     font-family: $main-font-regular;
     margin-bottom: 1rem;
+
+    &--error {
+      outline-color: $err-color;
+      border-color: $err-color;
+    }
   }
   //added extra support across browsers
   &__textarea::-webkit-input-placeholder {
