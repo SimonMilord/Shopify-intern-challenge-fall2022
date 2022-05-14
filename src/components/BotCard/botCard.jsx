@@ -4,7 +4,7 @@ import React from 'react';
 export default function BotCard(props) {
   return (
     <div className='card'>
-      <button>{props.name}</button>
+      <h2>{props.name}</h2>
     </div>
   );
 }

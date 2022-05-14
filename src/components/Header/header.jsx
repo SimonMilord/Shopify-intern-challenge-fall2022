@@ -12,7 +12,7 @@ export default function Header(props) {
           <h1 className='header__title'>{props.harry.title}</h1>
       }
         <Link to="/">
-          <button className='header__toggle'>Go Back</button>
+          <h2 className='header__toggle' tabIndex={0}>Go Back</h2>
         </Link>
       </div>
     </header>

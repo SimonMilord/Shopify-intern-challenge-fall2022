@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 
 const harryProfile = {
   name: "Harry",
-  title: "Harry, the (more useful) bot",
+  title: "Harry, the (a lot more helpful) bot",
   subtitle: "Enter a prompt for Harry",
 };
 
@@ -26,6 +26,10 @@ export default function Harry(props) {
       setResponses(resArray);
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("responses-harry", JSON.stringify(responses));
+  }, [responses]);
 
   const handlePrompt = async (prompt) => {
     if (prompt === "") {
@@ -96,7 +100,7 @@ export default function Harry(props) {
         )}
         <ul className="responses__list">
           {responses.map((item, index) => (
-            <li className="responses__item" key={index}>
+            <li className="responses__item" key={index} tabIndex={0}>
               <Response res={item} profile={harryProfile} />
             </li>
           ))}

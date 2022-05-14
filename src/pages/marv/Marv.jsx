@@ -6,17 +6,18 @@ import Response from "../../components/Response/response";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const marvPrompt = "Marv is a chatbot that reluctantly answers questions with sarcastic responses: You: ";
+const marvPrompt =
+  "Marv is a chatbot that reluctantly answers questions with sarcastic responses: You: ";
 
 const marvProfile = {
   name: "Marv",
-  title: "Marv, the (not so useful) bot",
+  title: "Marv, the (not always helpful) bot",
   subtitle: "Enter a prompt for Marv",
 };
 
 export default function Marv(props) {
   const [missingPrompt, setMissingPrompt] = useState(false);
-  const [prompt, setPrompt] = useState("");
+  // const [prompt, setPrompt] = useState("");
   const [responses, setResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,15 +28,18 @@ export default function Marv(props) {
     }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("responses-marv", JSON.stringify(responses));
+  }, [responses]);
+
   const handlePrompt = async (prompt) => {
     if (prompt === "") {
       setMissingPrompt(true);
     } else {
       setMissingPrompt(false);
       setIsLoading(true);
-      await setPrompt(prompt);
+      // setPrompt(prompt);
       await getAnswer(prompt);
-      localStorage.setItem("responses-marv", JSON.stringify(responses));
       setIsLoading(false);
     }
   };
@@ -67,15 +71,19 @@ export default function Marv(props) {
           },
         }
       )
-      .then(async (res) => {
+      .then(async(res) => {
         await setResponses((responses) => [
           res.data.choices[0].text,
           ...responses,
         ]);
       })
+      // .then(
+      //   localStorage.setItem("responses-marv", JSON.stringify(responses))
+      // )
       .catch((err) => {
         console.log(err);
       });
+    return res;
   };
   document.title = `${marvProfile.title}`;
   return (
@@ -90,13 +98,13 @@ export default function Marv(props) {
       <section className="responses">
         {responses[0] === undefined ? (
           <></>
-          ) :
+        ) : (
           <h2 className="responses__title">Responses</h2>
-          }
+        )}
         <ul className="responses__list">
           {responses.map((item, index) => (
-            <li className="responses__item" key={index}>
-              <Response res={item} profile={marvProfile}/>
+            <li className="responses__item" key={index} tabIndex={0}>
+              <Response res={item} profile={marvProfile} />
             </li>
           ))}
         </ul>
