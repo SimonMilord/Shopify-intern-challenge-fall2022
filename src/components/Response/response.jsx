@@ -4,8 +4,19 @@ import './response.scss';
 export default function Response(props) {
 
   const string = props.res;
-  let formattedPrompt = string.substring(string.indexOf("You:"),string.indexOf("Marv:")).split(":")[1].trim();
-  let formattedResponse = string.substring(string.indexOf("Marv:"),string.length).split(":")[1].trim();;
+  let formattedPrompt = "";
+  let formattedResponse = "";
+
+  if (props.profile.name === "Marv") {
+    formattedPrompt = string.substring(string.indexOf("You:"),string.indexOf(`${props.profile.name}:`)).split(":")[1].trim();
+    formattedResponse = string.substring(string.indexOf(`${props.profile.name}:`),string.length).split(":")[1].trim();
+  } else {
+    formattedPrompt = string.split("\n\n")[0];
+    formattedResponse = string.split("\n\n")[1];
+    // console.log(string);
+    // console.log(formattedPrompt);
+    // console.log(formattedResponse);
+  }
 
   return (
     <div className='response'>
@@ -20,4 +31,3 @@ export default function Response(props) {
     </div>
   );
 }
-

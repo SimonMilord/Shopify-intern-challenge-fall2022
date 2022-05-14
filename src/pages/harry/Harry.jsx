@@ -6,9 +6,10 @@ import Response from "../../components/Response/response";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const harryPrompt = "";
+// const harryPrompt = "I am a highly intelligent question answering bot. If you ask me a question that is rooted in truth, I will give you the answer. If you ask me a question that is nonsense, trickery, or has no clear answer, I will respond with \"Unknown\".\n\nQ:";
 
 const harryProfile = {
+  name: "Harry",
   title: "Harry, the (more useful) bot",
   subtitle: "Enter a prompt for Harry"
 }
@@ -19,7 +20,7 @@ export default function Harry(props) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    let resArray = JSON.parse(localStorage.getItem("responses"));
+    let resArray = JSON.parse(localStorage.getItem("responses-harry"));
     if (resArray) {
       setResponses(resArray);
     }
@@ -29,20 +30,20 @@ export default function Harry(props) {
     setIsLoading(true);
     await setPrompt(prompt);
     await getAnswer(prompt);
-    localStorage.setItem("responses", JSON.stringify(responses));
+    localStorage.setItem("responses-harry", JSON.stringify(responses));
     setIsLoading(false);
   };
 
   const handleClear = async () => {
     await setResponses([]);
-    localStorage.removeItem('responses');
+    localStorage.removeItem('responses-harry');
   };
 
   const getAnswer = async (prompt) => {
 
     const data = {
-      prompt: `${harryPrompt}${prompt}`,
-      temperature: 0.6,
+      prompt: `${prompt}`,
+      temperature: 0,
       max_tokens: 64,
       echo: true,
       top_p: 1.0,
@@ -84,7 +85,7 @@ export default function Harry(props) {
         <ul className="responses__list">
           {responses.map((item, index) => (
             <li className="responses__item" key={index}>
-              <Response res={item} />
+              <Response res={item} profile={harryProfile}/>
             </li>
           ))}
         </ul>
