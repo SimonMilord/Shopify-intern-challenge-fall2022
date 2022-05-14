@@ -71,7 +71,7 @@ export default function Marv(props) {
           },
         }
       )
-      .then(async(res) => {
+      .then(async (res) => {
         await setResponses((responses) => [
           res.data.choices[0].text,
           ...responses,

@@ -1,17 +1,16 @@
-@import '../../styles/partials/mixins';
-@import '../../styles/partials/variables';
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
 
 .prompt {
-  @include display-flex(column,center,center);
+  @include display-flex(column, center, center);
   padding: 1rem;
-  // @include widthSection;
   &__title {
     @include title;
   }
   &__form {
     @include widthSection;
     width: 100%;
-    @include display-flex(column,center,center);
+    @include display-flex(column, center, center);
   }
   &__error {
     color: $err-color;
@@ -21,6 +20,9 @@
       visibility: hidden;
       margin-bottom: 0.5rem;
     }
+  }
+  &__label {
+    display: none;
   }
   &__textarea {
     width: 100%;
@@ -50,11 +52,10 @@
   }
   &__buttons {
     width: 100%;
-    @include display-flex(row,space-around,center);
+    @include display-flex(row, space-around, center);
 
     button {
       width: 6.5625rem;
     }
   }
-
 }

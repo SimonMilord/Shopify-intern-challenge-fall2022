@@ -2,11 +2,10 @@
 @import "../../styles/partials/mixins";
 
 .marv {
-
   .responses {
     @include widthSection;
     margin: 0 auto;
-    @include display-flex(column,center,center);
+    @include display-flex(column, center, center);
     @include tablet {
       @include display-flex(column, center, flex-start);
     }
@@ -22,7 +21,7 @@
       margin-bottom: 1rem;
     }
     .clear {
-      @include display-flex(row,center,center);
+      @include display-flex(row, center, center);
       width: 100%;
       margin: 2rem 0rem;
       position: relative;

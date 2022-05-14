@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import BotCard from '../../components/BotCard/botCard';
-import './Main.scss';
-import React from 'react';
+import BotCard from "../../components/BotCard/botCard";
+import "./Main.scss";
+import React from "react";
 
 export default function Main(props) {
   document.title = "Bip Bop";
@@ -10,13 +10,12 @@ export default function Main(props) {
     <div className="main">
       <section className="card-box">
         <Link to="/marv">
-          <BotCard name={"Marv"}/>
+          <BotCard name={"Marv"} />
         </Link>
         <Link to="/harry">
-          <BotCard name={"Harry"}/>
+          <BotCard name={"Harry"} />
         </Link>
       </section>
     </div>
   );
 }
-

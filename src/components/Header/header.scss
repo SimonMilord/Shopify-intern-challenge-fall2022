@@ -1,19 +1,16 @@
-@import '../../styles/partials/mixins';
-@import '../../styles/partials/variables';
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
 
 .header {
   margin-bottom: 2rem;
   @include paddingSection;
-  // position: absolute;
-  // top: 0;
-  // width: 100%;
   background-color: orange;
 
   &__inner {
     width: 100%;
-    @include display-flex(column,space-around,center);
+    @include display-flex(column, space-around, center);
     @include tablet {
-      @include display-flex(row,space-between,center);
+      @include display-flex(row, space-between, center);
     }
   }
   &__title {
@@ -22,8 +19,5 @@
     @include tablet {
       margin-bottom: 0rem;
     }
-  }
-  &__toggle {
-
   }
 }

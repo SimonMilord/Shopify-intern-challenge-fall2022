@@ -23,14 +23,28 @@ export default function Prompt(props) {
 
   return (
     <section className="prompt">
-      {props.marv ?
-        <h2 className="prompt__title">{props.marv.subtitle}</h2> :
+      {props.marv ? (
+        <h2 className="prompt__title">{props.marv.subtitle}</h2>
+      ) : (
         <h2 className="prompt__title">{props.harry.subtitle}</h2>
-    }
-      <span className={props.missingPrompt ? "prompt__error" : "prompt__error--hidden"}>Please enter a prompt before submitting</span>
+      )}
+      <span
+        className={
+          props.missingPrompt ? "prompt__error" : "prompt__error--hidden"
+        }
+      >
+        Please enter a prompt before submitting
+      </span>
       <form className="prompt__form" onSubmit={handleSubmit}>
+        <label className="prompt__label" name="prompt">
+          Prompt
+        </label>
         <textarea
-          className={props.missingPrompt ? "prompt__textarea prompt__textarea--error" : "prompt__textarea"}
+          className={
+            props.missingPrompt
+              ? "prompt__textarea prompt__textarea--error"
+              : "prompt__textarea"
+          }
           id="input"
           placeholder="Ex: Where are they taking the hobbits?"
           value={prompt}
@@ -49,9 +63,6 @@ export default function Prompt(props) {
           ) : (
             <BouncingLoader />
           )}
-          {/* <button className="prompt__submit prompt__submit--lazy" onClick={handleSubmit} name="lazy" type="submit">
-            Feeling lazy
-          </button> */}
         </div>
       </form>
     </section>

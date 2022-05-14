@@ -3,11 +3,11 @@ import "./bouncingLoader.scss";
 
 const BouncingLoader = (props) => {
   return (
-      <div className="bouncing-loader">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+    <div className="bouncing-loader">
+      <div className="bouncing-loader__dot"></div>
+      <div className="bouncing-loader__dot"></div>
+      <div className="bouncing-loader__dot"></div>
+    </div>
   );
 };
 
