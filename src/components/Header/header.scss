@@ -5,7 +5,10 @@
   margin-bottom: 2rem;
   @include paddingSection;
   background-color: lightcyan;
-  @include display-flex(row,space-between,center);
+  @include display-flex(column,space-between,center);
+  @include tablet {
+    @include display-flex(row,space-between,center);
+  }
 
   &__inner {
     width: 100%;
@@ -24,7 +27,7 @@
   }
   &__title {
     font-size: 24px;
-    margin-bottom: 2rem;
+    margin: 1rem 0rem;
     font-family: $sec-font-regular;
     @include tablet {
       margin-bottom: 0rem;
