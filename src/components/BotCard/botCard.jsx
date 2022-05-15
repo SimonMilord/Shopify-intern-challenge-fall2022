@@ -8,7 +8,7 @@ export default function BotCard(props) {
       <h2 className="card__name">{props.name}</h2>
       {props.name === "Awesom-O" ?
       <h3 className="card__desc">(The not always helpful bot)</h3> :
-      <h3 className="card__desc">(The a lot more helpful bot)</h3>
+      <h3 className="card__desc">(The more helpful bot)</h3>
     }
     </div>
   );
