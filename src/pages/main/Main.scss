@@ -2,13 +2,14 @@
 @import "../../styles/partials/mixins";
 
 .main {
-  // background-color: black;
+  background-color: lightcyan;
   height: 100vh;
   @include display-flex(column,space-around,space-around);
 
   &__instructions {
     @include display-flex(column,center,center);
     margin: 5rem 0rem 2rem 0rem;
+    font-family: $sec-font-regular;
     @include tablet {
       margin: 10rem 0rem 0rem 0rem;
     }

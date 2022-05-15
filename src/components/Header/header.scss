@@ -25,6 +25,7 @@
   &__title {
     font-size: 24px;
     margin-bottom: 2rem;
+    font-family: $sec-font-regular;
     @include tablet {
       margin-bottom: 0rem;
       margin-left: 1rem;

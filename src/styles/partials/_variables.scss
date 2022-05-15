@@ -1,3 +1,4 @@
+@use './fonts' as *;
 // width variables
 $mobile-width: 90%;
 $tablet-width: 80%;
@@ -5,6 +6,9 @@ $desktop-width: 70%;
 
 // Font variables
 $main-font-regular: "Roboto", Arial, Helvetica, sans-serif;
+// $sec-font-regular: "Press Start 2P", "Roboto", Arial, Helvetica, sans-serif;
+$sec-font-regular: "Permanent Marker", "Roboto", Arial, Helvetica, sans-serif;
+
 
 // color variables
 $err-color: red;
