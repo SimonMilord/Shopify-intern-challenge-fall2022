@@ -5,10 +5,30 @@
   // background-color: black;
   height: 100vh;
   @include display-flex(column,space-around,space-around);
+
   &__instructions {
     @include display-flex(column,center,center);
-    margin-top: 10rem;
+    margin: 5rem 0rem 2rem 0rem;
+    @include tablet {
+      margin: 10rem 0rem 0rem 0rem;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 1rem;
+      @include tablet {
+        margin-bottom: 2rem;
+        font-size: 32px;
+      }
+    }
+
+    h2 {
+      font-size: 16px;
+      @include tablet {
+        font-size: 20px;
+      }
+    }
   }
+
   .card-box {
     @include display-flex(column, space-around, center);
     height: 100%;
@@ -17,6 +37,7 @@
     }
     .cardLink {
       text-decoration: none;
+      margin-bottom: 2rem;
     }
   }
 }

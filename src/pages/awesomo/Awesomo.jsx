@@ -1,4 +1,4 @@
-import "./Harry.scss";
+import "./Awesomo.scss";
 import React from "react";
 import Header from "../../components/Header/header";
 import Prompt from "../../components/Prompt/prompt";
@@ -6,54 +6,51 @@ import Response from "../../components/Response/response";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-// const harryPrompt = "I am a highly intelligent question answering bot. If you ask me a question that is rooted in truth, I will give you the answer. If you ask me a question that is nonsense, trickery, or has no clear answer, I will respond with \"Unknown\".\n\nQ:";
+const awesomOPrompt =
+  "Marv is a chatbot that reluctantly answers questions with sarcastic responses: You: ";
 
-const harryProfile = {
-  name: "Harry",
-  title: "Harry, the (a lot more helpful) bot",
-  subtitle: "Enter a prompt for Harry",
+const awesomOProfile = {
+  name: "Awesom-O",
+  title: "Awesom-O, the (not always helpful) bot",
+  subtitle: "Enter a prompt for Awesom-O",
 };
 
-export default function Harry(props) {
+export default function Marv(props) {
   const [missingPrompt, setMissingPrompt] = useState(false);
-  const [prompt, setPrompt] = useState("");
   const [responses, setResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    let resArray = JSON.parse(localStorage.getItem("responses-harry"));
+    let resArray = JSON.parse(localStorage.getItem("responses-awesomo"));
     if (resArray) {
       setResponses(resArray);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("responses-harry", JSON.stringify(responses));
+    localStorage.setItem("responses-awesomo", JSON.stringify(responses));
   }, [responses]);
 
   const handlePrompt = async (prompt) => {
     if (prompt === "") {
-      // alert("Please enter a prompt");
       setMissingPrompt(true);
     } else {
       setMissingPrompt(false);
       setIsLoading(true);
-      await setPrompt(prompt);
       await getAnswer(prompt);
-      localStorage.setItem("responses-harry", JSON.stringify(responses));
       setIsLoading(false);
     }
   };
 
   const handleClear = async () => {
     await setResponses([]);
-    localStorage.removeItem("responses-harry");
+    localStorage.removeItem("responses-awesomo");
   };
 
   const getAnswer = async (prompt) => {
     const data = {
-      prompt: `${prompt}`,
-      temperature: 0,
+      prompt: `${awesomOPrompt}${prompt}`,
+      temperature: 0.6,
       max_tokens: 64,
       echo: true,
       top_p: 1.0,
@@ -81,16 +78,17 @@ export default function Harry(props) {
       .catch((err) => {
         console.log(err);
       });
+    return res;
   };
-  document.title = `${harryProfile.title}`;
+  document.title = `${awesomOProfile.title}`;
   return (
-    <div className="harry">
-      <Header harry={harryProfile} />
+    <main className="awesomo">
+      <Header awesomo={awesomOProfile} />
       <Prompt
         getPrompt={handlePrompt}
         isLoading={isLoading}
         missingPrompt={missingPrompt}
-        harry={harryProfile}
+        awesomo={awesomOProfile}
       />
       <section className="responses">
         {responses[0] === undefined ? (
@@ -101,7 +99,7 @@ export default function Harry(props) {
         <ul className="responses__list">
           {responses.map((item, index) => (
             <li className="responses__item" key={index} tabIndex={0}>
-              <Response res={item} profile={harryProfile} />
+              <Response res={item} profile={awesomOProfile} />
             </li>
           ))}
         </ul>
@@ -119,6 +117,6 @@ export default function Harry(props) {
           </div>
         )}
       </section>
-    </div>
+    </main>
   );
 }

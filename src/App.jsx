@@ -1,9 +1,7 @@
-// import '@shopify/polaris/build/esm/styles.css';
-// import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 import "./App.scss";
 import Main from "./pages/main/Main";
-import Harry from "./pages/harry/Harry";
-import Marv from "./pages/marv/Marv";
+import Jarvis from "./pages/jarvis/Jarvis";
+import Awesomo from "./pages/awesomo/Awesomo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
@@ -17,14 +15,14 @@ export default function App() {
             render={(routerProps) => <Main {...routerProps} />}
           />
           <Route
-            path="/marv"
+            path="/awesomo"
             exact
-            render={(routerProps) => <Marv {...routerProps} />}
+            render={(routerProps) => <Awesomo {...routerProps} />}
           />
           <Route
-            path="/harry"
+            path="/jarvis"
             exact
-            render={(routerProps) => <Harry {...routerProps} />}
+            render={(routerProps) => <Jarvis {...routerProps} />}
           />
           <Route
             path="*"

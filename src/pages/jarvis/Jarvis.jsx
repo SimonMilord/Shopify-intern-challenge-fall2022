@@ -1,4 +1,4 @@
-import "./Marv.scss";
+import "./Jarvis.scss";
 import React from "react";
 import Header from "../../components/Header/header";
 import Prompt from "../../components/Prompt/prompt";
@@ -6,30 +6,26 @@ import Response from "../../components/Response/response";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const marvPrompt =
-  "Marv is a chatbot that reluctantly answers questions with sarcastic responses: You: ";
-
-const marvProfile = {
-  name: "Marv",
-  title: "Marv, the (not always helpful) bot",
-  subtitle: "Enter a prompt for Marv",
+const jarvisProfile = {
+  name: "Jarvis",
+  title: "Jarvis, the (a lot more helpful) bot",
+  subtitle: "Enter a prompt for Jarvis",
 };
 
-export default function Marv(props) {
+export default function Jarvis(props) {
   const [missingPrompt, setMissingPrompt] = useState(false);
-  // const [prompt, setPrompt] = useState("");
   const [responses, setResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    let resArray = JSON.parse(localStorage.getItem("responses-marv"));
+    let resArray = JSON.parse(localStorage.getItem("responses-jarvis"));
     if (resArray) {
       setResponses(resArray);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("responses-marv", JSON.stringify(responses));
+    localStorage.setItem("responses-jarvis", JSON.stringify(responses));
   }, [responses]);
 
   const handlePrompt = async (prompt) => {
@@ -38,21 +34,21 @@ export default function Marv(props) {
     } else {
       setMissingPrompt(false);
       setIsLoading(true);
-      // setPrompt(prompt);
       await getAnswer(prompt);
+      localStorage.setItem("responses-jarvis", JSON.stringify(responses));
       setIsLoading(false);
     }
   };
 
   const handleClear = async () => {
     await setResponses([]);
-    localStorage.removeItem("responses-marv");
+    localStorage.removeItem("responses-jarvis");
   };
 
   const getAnswer = async (prompt) => {
     const data = {
-      prompt: `${marvPrompt}${prompt}`,
-      temperature: 0.6,
+      prompt: `${prompt}`,
+      temperature: 0,
       max_tokens: 64,
       echo: true,
       top_p: 1.0,
@@ -77,23 +73,19 @@ export default function Marv(props) {
           ...responses,
         ]);
       })
-      // .then(
-      //   localStorage.setItem("responses-marv", JSON.stringify(responses))
-      // )
       .catch((err) => {
         console.log(err);
       });
-    return res;
   };
-  document.title = `${marvProfile.title}`;
+  document.title = `${jarvisProfile.title}`;
   return (
-    <div className="marv">
-      <Header marv={marvProfile} />
+    <main className="jarvis">
+      <Header jarvis={jarvisProfile} />
       <Prompt
         getPrompt={handlePrompt}
         isLoading={isLoading}
         missingPrompt={missingPrompt}
-        marv={marvProfile}
+        jarvis={jarvisProfile}
       />
       <section className="responses">
         {responses[0] === undefined ? (
@@ -104,7 +96,7 @@ export default function Marv(props) {
         <ul className="responses__list">
           {responses.map((item, index) => (
             <li className="responses__item" key={index} tabIndex={0}>
-              <Response res={item} profile={marvProfile} />
+              <Response res={item} profile={jarvisProfile} />
             </li>
           ))}
         </ul>
@@ -122,6 +114,6 @@ export default function Marv(props) {
           </div>
         )}
       </section>
-    </div>
+    </main>
   );
 }

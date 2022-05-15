@@ -1,7 +1,7 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/mixins";
 
-.harry {
+.jarvis {
   .responses {
     @include widthSection;
     margin: 0 auto;
@@ -19,13 +19,17 @@
     &__item {
       background-color: lightgray;
       margin-bottom: 1rem;
+      border-radius: $radius;
     }
     .clear {
       @include display-flex(row, center, center);
       width: 100%;
-      margin: 2rem 0rem;
+      margin: 1rem 0rem;
       position: relative;
       bottom: 0;
+      button {
+        @include btn;
+      }
     }
     .noclear {
       @extend .clear;

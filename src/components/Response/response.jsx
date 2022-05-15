@@ -6,16 +6,16 @@ export default function Response(props) {
   let formattedPrompt = "";
   let formattedResponse = "";
 
-  if (props.profile.name === "Marv") {
+  if (props.profile.name === "Awesom-O") {
     formattedPrompt = string
       .substring(
         string.indexOf("You:"),
-        string.indexOf(`${props.profile.name}:`)
+        string.indexOf("Marv:")
       )
       .split(":")[1]
       .trim();
     formattedResponse = string
-      .substring(string.indexOf(`${props.profile.name}:`), string.length)
+      .substring(string.indexOf("Marv:"), string.length)
       .split(":")[1]
       .trim();
   } else {

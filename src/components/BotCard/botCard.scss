@@ -3,16 +3,35 @@
 
 .card {
   @include display-flex(column,center,center);
-  // background-color: purple;
-  border: 1px solid black;
-  border-radius: 4px;
-  min-width: 15rem;
-  min-height: 20rem;
+  background-color: lightgray;
+  color: black;
+  padding: 1rem;
+  border-radius: $radius;
+  width: 16rem;
+  height: 16rem;
   transition: 0.3s all ease;
-  &__name {
-    text-decoration: none;
+  @include tablet {
+    width: 20rem;
+    height: 20rem;
   }
   &:hover {
     transform: scale(1.1);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  &:active {
+    color: black;
+  }
+  &__image {
+    height: 10rem;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  &__name {
+    text-decoration: none;
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+  }
+  &__desc {
+    font-size: 14px;
   }
 }

@@ -3,12 +3,13 @@
 
 .prompt {
   @include display-flex(column, center, center);
-  padding: 1rem;
+  @include widthSection;
+  margin: 0 auto;
+  margin-bottom: 2rem;
   &__title {
     @include title;
   }
   &__form {
-    @include widthSection;
     width: 100%;
     @include display-flex(column, center, center);
   }
@@ -31,6 +32,7 @@
     height: 30vh;
     font-family: $main-font-regular;
     margin-bottom: 1rem;
+    border-radius: $radius;
 
     &--error {
       outline-color: $err-color;
@@ -55,7 +57,8 @@
     @include display-flex(row, space-around, center);
 
     button {
-      width: 6.5625rem;
+      font-family: $main-font-regular;
+      @include btn;
     }
   }
 }
