@@ -17,6 +17,8 @@ The app should have a simple-to-use interface that includes the following:
 
 ## My Approach
 
+I decided to build an app where the user would get to pick between 2 bots: Awesom-o and Jarvis. Once the user picked a bot, they will be redirected to a page with a form to ask a question to the bot. In the case of Awesom-o, the bot will either answer correctly, reluctantly or sarcastically depending on its mood. In the case of Jarvis, the bot will answer correctly every time given a clear enough prompt. The prompts and answers asked are then stored in a list below the prompt with the newest one at the top.
+
 ### App Architechture
 I built the application using React and SASS for styling. React allowed me to breakdown the structure of the app into 3 pages and build components to build these pages, notably for the prompt form and the response section. I leveraged React hooks to manage the state and used the React-router library to handle the routing.
 
