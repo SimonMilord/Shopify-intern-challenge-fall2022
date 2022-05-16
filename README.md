@@ -24,6 +24,8 @@ I built the application using React and SASS for styling. React allowed me to br
 
 Upon initial render, the app displays the main page where the user is prompted to choose between 2 bots (Awesom-o and Jarvis). Depending on which bots the user selects, they will be redirected to the associated page where they can enter prompts and view their previous ones.
 
+For the API, I decided to go with the text-curie-001 engine here since it had a better balance between speed, cost and accuracy.
+
 I used SASS over vanilla CSS because I like to easily be able to use variables, mixins and indent my CSS for better readability.
 
 ### Functionalities
@@ -67,12 +69,8 @@ Insert screenshots here
 
 ## Environment Variables
 
-REACT_APP_API_URL= https://api.openai.com/v1/engines/text-curie-001/completions
-<br>
 REACT_APP_API_KEY= "enter your api key here"
 <br>
-
-I decided to go with the text-curie-001 engine here since it had a better balance between speed, cost and accuracy.
 
 ## Usage / Run locally
 
