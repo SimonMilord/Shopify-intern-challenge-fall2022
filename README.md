@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Shopify Intern Challenge Fall 2022 : Bot-pedia
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Challenge Overview
 
-In the project directory, you can run:
+Write an app that sends plain text prompts to the OpenAI API and displays the results in a list.
 
-### `npm start`
+The app should have a simple-to-use interface that includes the following:
+* A form for entering text prompts
+* Submitting the form sends the prompt to the OpenAI API
+* Results are displayed in a list, sorted from newest to oldest. Each result should include the original prompt and a response from the API.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Technical Requirements
+* Results should come from OpenAI’s completions API
+* Each result should include at least the original prompt you entered and the response from the API
+* Responses should be stored in order of newest to oldest
+* The HTML that ends up being served client-side should be accessible and semantic
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## My Approach
 
-### `npm test`
+### App Architechture
+Talk about how I built the app, components
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Functionalities
+* Localstorage to Save responses if the user leaves or reloads the page
+* Clear button to clear both storage and the list on the DOM
+* Made the app more specific to a single purpose (with the Q&A bots)
 
-### `npm run build`
+## Usability & Accessibility considerations
+Talk about user experience, design, semantic HTML, lighthouse score, keyboard support, etc.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Click here](https://bot-pedia.netlify.app/) if you want to see the deployed version.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Screenshots
 
-### `npm run eject`
+Insert screenshots here
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [React.js](https://reactjs.org/)<br>
+* [React Router library](https://reactrouter.com/)<br>
+* [Sass](https://sass-lang.com/)<br>
+* [Axios](https://axios-http.com/)<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Environment Variables
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+REACT_APP_API_URL= https://api.openai.com/v1/engines/text-curie-001/completions
+<br>
+REACT_APP_API_KEY= "enter your api key here"
+<br>
 
-## Learn More
+I decided to go with the text-curie-001 engine here since it had a better balance between speed, cost and accuracy.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage / Run locally
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To run this project locally, follow these steps:
 
-### Code Splitting
+Clone the repository:
+<br>
+`$ git clone https://github.com/SimonMilord/Shopify-intern-challenge-fall2022.git`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Install dependencies:
+<br>
+`$ npm install`
 
-### Analyzing the Bundle Size
+Run locally:
+<br>
+`$ npm start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Next Steps
 
-### Making a Progressive Web App
+Insert next steps here
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contact
 
-### Advanced Configuration
+This web app was designed and developed by Simon Milord.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to follow me on [Github](https://github.com/SimonMilord) or [LinkedIn](https://www.linkedin.com/in/simonmilord/)
