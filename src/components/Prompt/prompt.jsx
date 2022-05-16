@@ -15,6 +15,7 @@ export default function Prompt(props) {
     setPrompt("");
   };
 
+  // handle submit with the ENTER key for accessibility
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
       handleSubmit(e);

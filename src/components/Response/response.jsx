@@ -6,6 +6,7 @@ export default function Response(props) {
   let formattedPrompt = "";
   let formattedResponse = "";
 
+  // if awesom-o, formats the prompt to display in the list
   if (props.profile.name === "Awesom-O") {
     formattedPrompt = string
       .substring(

@@ -2,7 +2,7 @@ import "./Awesomo.scss";
 import React from "react";
 import Header from "../../components/Header/header";
 import Prompt from "../../components/Prompt/prompt";
-import Response from "../../components/Response/response";
+import ResponsesList from "../../components/ResponsesList/responsesList";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -20,6 +20,7 @@ export default function Marv(props) {
   const [responses, setResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // checks localStorage for existing responses to display
   useEffect(() => {
     let resArray = JSON.parse(localStorage.getItem("responses-awesomo"));
     if (resArray) {
@@ -27,10 +28,12 @@ export default function Marv(props) {
     }
   }, []);
 
+  // updates the localStorage when responses state updates
   useEffect(() => {
     localStorage.setItem("responses-awesomo", JSON.stringify(responses));
   }, [responses]);
 
+  // handles when a prompt is submitted by the user
   const handlePrompt = async (prompt) => {
     if (prompt === "") {
       setMissingPrompt(true);
@@ -42,15 +45,17 @@ export default function Marv(props) {
     }
   };
 
+  // clears the localStorage and the responses state
   const handleClear = async () => {
     await setResponses([]);
     localStorage.removeItem("responses-awesomo");
   };
 
+  // API POST request using Axios
   const getAnswer = async (prompt) => {
     const data = {
       prompt: `${awesomOPrompt}${prompt}`,
-      temperature: 0.6,
+      temperature: 0.75,
       max_tokens: 64,
       echo: true,
       top_p: 1.0,
@@ -59,16 +64,12 @@ export default function Marv(props) {
     };
 
     const res = await axios
-      .post(
-        "https://api.openai.com/v1/engines/text-curie-001/completions",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-          },
-        }
-      )
+      .post(`${process.env.REACT_APP_API_URL}`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+        },
+      })
       .then(async (res) => {
         await setResponses((responses) => [
           res.data.choices[0].text,
@@ -81,6 +82,7 @@ export default function Marv(props) {
     return res;
   };
   document.title = `${awesomOProfile.title}`;
+
   return (
     <main className="awesomo">
       <Header awesomo={awesomOProfile} />
@@ -90,33 +92,11 @@ export default function Marv(props) {
         missingPrompt={missingPrompt}
         awesomo={awesomOProfile}
       />
-      <section className="responses">
-        {responses[0] === undefined ? (
-          <></>
-        ) : (
-          <h2 className="responses__title">Responses</h2>
-        )}
-        <ul className="responses__list">
-          {responses.map((item, index) => (
-            <li className="responses__item" key={index} tabIndex={0}>
-              <Response res={item} profile={awesomOProfile} />
-            </li>
-          ))}
-        </ul>
-        {responses[0] === undefined ? (
-          <div className="noclear"></div>
-        ) : (
-          <div className="clear">
-            <button
-              className="responses__clear"
-              type="button"
-              onClick={handleClear}
-            >
-              Clear
-            </button>
-          </div>
-        )}
-      </section>
+      <ResponsesList
+        profile={awesomOProfile}
+        responses={responses}
+        clear={handleClear}
+      />
     </main>
   );
 }

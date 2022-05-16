@@ -12,6 +12,7 @@
   }
 }
 
+// Display mixins
 @mixin display-flex($direction, $justify, $align) {
   display: flex;
   flex-direction: $direction;
@@ -36,6 +37,7 @@
   }
 }
 
+// Component mixins
 @mixin title {
   font-size: 20px;
   margin-bottom: 1rem;
@@ -53,6 +55,7 @@
   border-radius: $radius;
   width: 6.5625rem;
   border: none;
+  cursor: pointer;
 
   &:hover {
     background-color: darkblue;

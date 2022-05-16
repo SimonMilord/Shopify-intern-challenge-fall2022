@@ -2,7 +2,7 @@ import "./Jarvis.scss";
 import React from "react";
 import Header from "../../components/Header/header";
 import Prompt from "../../components/Prompt/prompt";
-import Response from "../../components/Response/response";
+import ResponsesList from "../../components/ResponsesList/responsesList";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -17,6 +17,7 @@ export default function Jarvis(props) {
   const [responses, setResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // checks localStorage for existing responses to display
   useEffect(() => {
     let resArray = JSON.parse(localStorage.getItem("responses-jarvis"));
     if (resArray) {
@@ -24,10 +25,12 @@ export default function Jarvis(props) {
     }
   }, []);
 
+  // updates the localStorage when responses state updates
   useEffect(() => {
     localStorage.setItem("responses-jarvis", JSON.stringify(responses));
   }, [responses]);
 
+  // handles when a prompt is submitted by the user
   const handlePrompt = async (prompt) => {
     if (prompt === "") {
       setMissingPrompt(true);
@@ -40,11 +43,13 @@ export default function Jarvis(props) {
     }
   };
 
+  // clears the localStorage and the responses state
   const handleClear = async () => {
     await setResponses([]);
     localStorage.removeItem("responses-jarvis");
   };
 
+  // API POST request using Axios
   const getAnswer = async (prompt) => {
     const data = {
       prompt: `${prompt}`,
@@ -58,7 +63,7 @@ export default function Jarvis(props) {
 
     const res = await axios
       .post(
-        "https://api.openai.com/v1/engines/text-curie-001/completions",
+        `${process.env.REACT_APP_API_URL}`,
         data,
         {
           headers: {
@@ -78,6 +83,7 @@ export default function Jarvis(props) {
       });
   };
   document.title = `${jarvisProfile.title}`;
+
   return (
     <main className="jarvis">
       <Header jarvis={jarvisProfile} />
@@ -87,33 +93,10 @@ export default function Jarvis(props) {
         missingPrompt={missingPrompt}
         jarvis={jarvisProfile}
       />
-      <section className="responses">
-        {responses[0] === undefined ? (
-          <></>
-        ) : (
-          <h2 className="responses__title">Responses</h2>
-        )}
-        <ul className="responses__list">
-          {responses.map((item, index) => (
-            <li className="responses__item" key={index} tabIndex={0}>
-              <Response res={item} profile={jarvisProfile} />
-            </li>
-          ))}
-        </ul>
-        {responses[0] === undefined ? (
-          <div className="noclear"></div>
-        ) : (
-          <div className="clear">
-            <button
-              className="responses__clear"
-              type="button"
-              onClick={handleClear}
-            >
-              Clear
-            </button>
-          </div>
-        )}
-      </section>
+      <ResponsesList profile={jarvisProfile}
+      responses={responses}
+      clear={handleClear}
+      />
     </main>
   );
 }

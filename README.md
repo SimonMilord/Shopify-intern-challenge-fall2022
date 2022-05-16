@@ -1,6 +1,5 @@
 # Shopify Intern Challenge Fall 2022 : Bot-pedia
 
-
 ## Challenge Overview
 
 Write an app that sends plain text prompts to the [OpenAI](https://openai.com/api/) API and displays the results in a list.
@@ -19,15 +18,33 @@ The app should have a simple-to-use interface that includes the following:
 ## My Approach
 
 ### App Architechture
-Talk about how I built the app, components
+I built the application using React and SASS for styling. React allowed me to breakdown the structure of the app into 3 pages and build components to build these pages, notably for the prompt form and the response section. I leveraged React hooks to manage the state and used the React-router library to handle the routing.
+
+Upon initial render, the app displays the main page where the user is prompted to choose between 2 bots (Awesom-o and Jarvis). Depending on which bots the user selects, they will be redirected to the associated page where they can enter prompts and view their previous ones.
+
+I used SASS over vanilla CSS because I like to easily be able to use variables, mixins and indent my CSS for better readability.
 
 ### Functionalities
-* Localstorage to Save responses if the user leaves or reloads the page
-* Clear button to clear both storage and the list on the DOM
+On top of the minimum technical requirements, here are the extra ones that were implemented:
+
+* Being able to save prompts and answers if the user leaves or reloads the page (using LocalStorage)
+* Allowing users to clear both the cached data in LocalStorage and the list displayed on the DOM
 * Made the app more specific to a single purpose (with the Q&A bots)
+* Added some validation for the form with a span that appears if the user submits an empty prompt
 
 ## Usability & Accessibility considerations
-Talk about user experience, design, semantic HTML, lighthouse score, keyboard support, etc.
+When it came to usability, I conducted user testing on a few users from different age groups to see how they navigated through the app and if there were any pain points. The simple nature of the design made it frictionless for users and the feedback I received was positive.
+
+I also made sure the application is responsive for mobile, tablet and desktop. I used the mobile-first approach to guide my design and leveraged media queries in SASS to keep the app responsive.
+
+For accessibility, I managed to obtain a Lighthouse score of 100 by implementing the following:
+* Leveraged as much semantic HTML tag as I could, when it made sense.
+* Paid attention to contrast-ratio when picking a color
+* Made sure the link descriptions
+* Added meaningful alt tag for images
+* Added form labels for screen readers
+* Made sure the app could be easily nagivated with the keyboard (using TAB, SHIFT+TAB and ENTER)
+* Made sure the language was simple to understand and in an easy-to-read font
 
 ## Demo
 
@@ -43,6 +60,7 @@ Insert screenshots here
 * [React Router library](https://reactrouter.com/)<br>
 * [Sass](https://sass-lang.com/)<br>
 * [Axios](https://axios-http.com/)<br>
+* [React-testing Library](https://testing-library.com/)<br>
 * [Open AI API](https://openai.com/api/)
 
 ## Environment Variables
