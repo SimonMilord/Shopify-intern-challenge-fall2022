@@ -66,13 +66,14 @@ export default function Marv(props) {
     const res = await axios
       .post(
         "https://api.openai.com/v1/engines/text-curie-001/completions",
-        // `${process.env.REACT_APP_API_URL}`,
-        data, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-        },
-      })
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+          },
+        }
+      )
       .then(async (res) => {
         await setResponses((responses) => [
           res.data.choices[0].text,

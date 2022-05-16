@@ -63,7 +63,6 @@ export default function Jarvis(props) {
 
     const res = await axios
       .post(
-        // `${process.env.REACT_APP_API_URL}`,
         "https://api.openai.com/v1/engines/text-curie-001/completions",
         data,
         {
@@ -94,9 +93,10 @@ export default function Jarvis(props) {
         missingPrompt={missingPrompt}
         jarvis={jarvisProfile}
       />
-      <ResponsesList profile={jarvisProfile}
-      responses={responses}
-      clear={handleClear}
+      <ResponsesList
+        profile={jarvisProfile}
+        responses={responses}
+        clear={handleClear}
       />
     </main>
   );
