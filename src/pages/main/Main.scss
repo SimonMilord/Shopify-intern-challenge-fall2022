@@ -2,30 +2,32 @@
 @import "../../styles/partials/mixins";
 
 .main {
-  background-color: lightcyan;
+  // background-color: $background-main;
+  @include backgroundGradient;
   height: 100vh;
   @include display-flex(column,space-around,space-around);
 
   &__instructions {
     @include display-flex(column,center,center);
     margin: 5rem 0rem 2rem 0rem;
-    font-family: $sec-font-regular;
     @include tablet {
       margin: 10rem 0rem 0rem 0rem;
     }
     h1 {
-      font-size: 24px;
-      margin-bottom: 1rem;
+      font-size: 28px;
+      margin-bottom: 1.25rem;
+      color: $main-font-color;
       @include tablet {
-        margin-bottom: 2rem;
-        font-size: 32px;
+        margin-bottom: 1.125rem;
+        font-size: 60px;
       }
     }
 
     h2 {
-      font-size: 16px;
+      font-size: 24px;
+      color: $main-font-color;
       @include tablet {
-        font-size: 20px;
+        font-size: 30px;
       }
     }
   }

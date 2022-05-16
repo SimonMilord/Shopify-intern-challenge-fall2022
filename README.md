@@ -3,7 +3,7 @@
 
 ## Challenge Overview
 
-Write an app that sends plain text prompts to the OpenAI API and displays the results in a list.
+Write an app that sends plain text prompts to the [OpenAI](https://openai.com/api/) API and displays the results in a list.
 
 The app should have a simple-to-use interface that includes the following:
 * A form for entering text prompts
@@ -43,6 +43,7 @@ Insert screenshots here
 * [React Router library](https://reactrouter.com/)<br>
 * [Sass](https://sass-lang.com/)<br>
 * [Axios](https://axios-http.com/)<br>
+* [Open AI API](https://openai.com/api/)
 
 ## Environment Variables
 
@@ -71,7 +72,9 @@ Run locally:
 
 ## Next Steps
 
-Insert next steps here
+I believe the application can be improved further. Given more time, I would have added more types of "bots" that would
+do more than giving the right answers or answering sarcastically and reluctantly. The Open AI API has wide range of interesting
+completions that would make for cool bots such as a movie to emoji translator or an Analogy maker. Another feature I would add would be a temperature slider. This feature would enable the user to change the amount of "Risks" the AI takes in the model, leading to a narrower or wider range of potential answers.
 
 ## Contact
 

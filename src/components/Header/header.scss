@@ -4,7 +4,7 @@
 .header {
   margin-bottom: 2rem;
   @include paddingSection;
-  background-color: lightcyan;
+  background-color: $background-main;
   @include display-flex(column,space-between,center);
   @include tablet {
     @include display-flex(row,space-between,center);
@@ -28,7 +28,6 @@
   &__title {
     font-size: 24px;
     margin: 1rem 0rem;
-    font-family: $sec-font-regular;
     @include tablet {
       margin-bottom: 0rem;
       margin-left: 1rem;
