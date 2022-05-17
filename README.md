@@ -56,10 +56,7 @@ For accessibility, I managed to obtain a Lighthouse score of 100 by implementing
 
 ## Screenshots
 
-<img src="" width=50% height=50% alt="Main page">
-<img src="" width=50% height=50% alt="Awesom-O's page">
-<img src="" width=50% height=50% alt="Jarvis' page">
-<img src="" width=50% height=50% alt="Responses List">
+<img src="screenshots/mainPage.png" width=50% height=50% alt="Main page"><img src="screenshots/awesom-o.png" width=50% height=50% alt="Awesom-O's page"><img src="screenshots/jarvis.png" width=50% height=50% alt="Jarvis' page"><img src="screenshots/responseList.png" width=50% height=50% alt="Responses List">
 
 ## Tech Stack
 
