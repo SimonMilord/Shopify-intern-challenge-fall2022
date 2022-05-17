@@ -1,4 +1,3 @@
-import "./Awesomo.scss";
 import React from "react";
 import Header from "../../components/Header/header";
 import Prompt from "../../components/Prompt/prompt";

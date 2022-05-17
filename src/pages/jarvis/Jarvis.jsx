@@ -1,4 +1,3 @@
-import "./Jarvis.scss";
 import React from "react";
 import Header from "../../components/Header/header";
 import Prompt from "../../components/Prompt/prompt";
@@ -81,6 +80,7 @@ export default function Jarvis(props) {
       .catch((err) => {
         console.log(err);
       });
+      return res;
   };
   document.title = `${jarvisProfile.title}`;
 

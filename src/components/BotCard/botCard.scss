@@ -1,5 +1,4 @@
-@import "../../styles/partials/mixins";
-@import "../../styles/partials/variables";
+@import "../../styles/partials/global";
 
 .card {
   @include display-flex(column,center,center);
