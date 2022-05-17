@@ -15,9 +15,11 @@
   }
 
   &__item {
-    background-color: lightgray;
+    background-color: $dark-primary;
+    color: $white;
     margin-bottom: 1rem;
     border-radius: $radius;
+    border: 1px solid $accent-color;
   }
   .clear {
     @include display-flex(row, center, center);

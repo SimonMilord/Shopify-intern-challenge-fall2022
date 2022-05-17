@@ -26,30 +26,41 @@
   }
   &__textarea {
     width: 100%;
+    background-color: $dark-primary;
     resize: none;
     padding: 10px;
     height: 30vh;
     font-family: $main-font-regular;
     margin-bottom: 1rem;
     border-radius: $radius;
+    border-color: $light-primary;
+    color: $light-primary;
 
     &--error {
       outline-color: $err-color;
       border-color: $err-color;
     }
+    &:focus {
+      outline-color: $accent-color;
+      border-color: $accent-color;
+    }
   }
   //added extra support across browsers
   &__textarea::-webkit-input-placeholder {
     font-family: $main-font-regular, Arial, Helvetica, sans-serif;
+    color: $light-primary;
   }
   &__textarea:-ms-input-placeholder {
     font-family: $main-font-regular, Arial, Helvetica, sans-serif;
+    color: $light-primary;
   }
   &__textarea:-moz-placeholder {
     font-family: $main-font-regular, Arial, Helvetica, sans-serif;
+    color: $light-primary;
   }
   &__textarea::-moz-placeholder {
     font-family: $main-font-regular, Arial, Helvetica, sans-serif;
+    color: $light-primary;
   }
   &__buttons {
     width: 100%;

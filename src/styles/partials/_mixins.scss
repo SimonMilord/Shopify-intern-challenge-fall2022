@@ -41,6 +41,7 @@
 @mixin title {
   font-size: 20px;
   margin-bottom: 1rem;
+  color: $main-font-color;
   @include tablet {
     margin-bottom: 2rem;
   }
@@ -48,8 +49,8 @@
 
 @mixin btn {
   @include display-flex(row,center,center);
-  background-color: blue;
-  color: white;
+  background-color: $accent-color;
+  color: $dark-primary;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: $radius;
@@ -58,37 +59,9 @@
   cursor: pointer;
 
   &:hover {
-    background-color: darkblue;
+    background-color: white;
   }
   &:active {
     transform: scale(0.95);
   }
-}
-
-@mixin backgroundAnimation {
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-}
-
-@mixin backgroundGradient {
-  background: linear-gradient(
-    45deg,
-    #ee7752,
-    #e96195,
-    #23a6d5,
-    #4379ff
-  );
-  background-size: 400% 400%;
-  animation: gradient 12s ease infinite;
-  height: 100vh;
-  @include backgroundAnimation;
 }

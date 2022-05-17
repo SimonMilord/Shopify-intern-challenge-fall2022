@@ -25,6 +25,13 @@ export default function App() {
             render={(routerProps) => <Jarvis {...routerProps} />}
           />
           <Route
+            path="/portfolio"
+            component={() => {
+              window.location.replace("https://simonmilord.com/");
+              return null;
+            }}
+          />
+          <Route
             path="*"
             exact
             render={(routerProps) => <Main {...routerProps} />}

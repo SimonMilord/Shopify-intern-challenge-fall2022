@@ -78,7 +78,7 @@ export default function Jarvis(props) {
         ]);
       })
       .catch((err) => {
-        console.log(err);
+        alert("Seems like there was a problem on our end, sorry aboot that eh!");
       });
       return res;
   };

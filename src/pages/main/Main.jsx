@@ -11,7 +11,13 @@ export default function Main(props) {
   return (
     <main className="main">
       <div className="main__instructions">
-        <h1 className="main__title">Welcome to Bot-pedia</h1>
+        <h1 className="main__title">
+          Welco
+          <Link className="main__easterEgg" to="/portfolio">
+            me
+          </Link>{" "}
+          to Bot-pedia
+        </h1>
         <h2 className="main__subtitle">Choose a bot and ask away!</h2>
       </div>
       <section className="card-box">

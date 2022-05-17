@@ -64,7 +64,7 @@ export default function Marv(props) {
 
     const res = await axios
       .post(
-        "https://api.openai.com/v1/engines/text-curie-001/completions",
+        "https://api.openai.com/v1/engines/text-curie-001/completionsz",
         data,
         {
           headers: {
@@ -80,7 +80,7 @@ export default function Marv(props) {
         ]);
       })
       .catch((err) => {
-        console.log(err);
+        alert("Seems like there was a problem on our end, sorry aboot that eh!");
       });
     return res;
   };

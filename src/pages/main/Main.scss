@@ -1,13 +1,15 @@
 @import "../../styles/partials/global";
 
 .main {
-  // background-color: $background-main;
-  @include backgroundGradient;
   height: 100vh;
-  @include display-flex(column,space-around,space-around);
+  @include display-flex(column, space-around, space-around);
 
+  &__easterEgg {
+    text-decoration: none;
+    color: $accent-color;
+  }
   &__instructions {
-    @include display-flex(column,center,center);
+    @include display-flex(column, center, center);
     margin: 5rem 0rem 2rem 0rem;
     @include tablet {
       margin: 10rem 0rem 0rem 0rem;

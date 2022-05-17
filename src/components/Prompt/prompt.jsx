@@ -25,9 +25,9 @@ export default function Prompt(props) {
   return (
     <section className="prompt">
       {props.awesomo ? (
-        <h2 className="prompt__title">{props.awesomo.subtitle}</h2>
+        <h2 className="prompt__title">{props.awesomo.subtitle} !</h2>
       ) : (
-        <h2 className="prompt__title">{props.jarvis.subtitle}</h2>
+        <h2 className="prompt__title">{props.jarvis.subtitle} !</h2>
       )}
       <span
         className={
