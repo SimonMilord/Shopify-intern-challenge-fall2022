@@ -64,7 +64,7 @@ export default function Marv(props) {
 
     const res = await axios
       .post(
-        "https://api.openai.com/v1/engines/text-curie-001/completionsz",
+        "https://api.openai.com/v1/engines/text-curie-001/completions",
         data,
         {
           headers: {

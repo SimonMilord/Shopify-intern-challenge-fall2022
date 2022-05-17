@@ -20,7 +20,7 @@ The app should have a simple-to-use interface that includes the following:
 I decided to build an app where the user would get to pick between 2 bots: Awesom-o and Jarvis. Once the user picked a bot, they will be redirected to a page with a form to ask a question to the bot. In the case of Awesom-o, the bot will either answer correctly, reluctantly or sarcastically depending on its mood. In the case of Jarvis, the bot will answer correctly every time given a clear enough prompt. The prompts and answers asked are then stored in a list below the prompt with the newest one at the top.
 
 ### App Architechture
-I built the application using React and SASS for styling. React allowed me to breakdown the structure of the app into 3 pages and build components to build these pages, notably for the prompt form and the response section. I leveraged React hooks to manage the state and used the React-router library to handle the routing.
+I built the application using React and SASS for styling. React allowed me to break down the structure of the app into 3 pages and build components to build these pages, notably in the prompt form and the response section. I leveraged React hooks to manage the state and used the React-router library to handle the routing.
 
 Upon initial render, the app displays the main page where the user is prompted to choose between 2 bots (Awesom-o and Jarvis). Depending on which bots the user selects, they will be redirected to the associated page where they can enter prompts and view their previous ones.
 
@@ -43,7 +43,7 @@ I also made sure the application is responsive for mobile, tablet and desktop. I
 
 For accessibility, I managed to obtain a Lighthouse score of 100 by implementing the following:
 * Leveraged as much semantic HTML tag as I could, when it made sense.
-* Paid attention to contrast-ratio when picking a color
+* Paid attention to contrast-ratio when picking a color. I got WCAG AAA approval and had contrast ratios well above 10:1.
 * Made sure the link descriptions
 * Added meaningful alt tag for images
 * Added form labels for screen readers
@@ -56,7 +56,10 @@ For accessibility, I managed to obtain a Lighthouse score of 100 by implementing
 
 ## Screenshots
 
-Insert screenshots here
+<img src="" width=50% height=50% alt="Main page">
+<img src="" width=50% height=50% alt="Awesom-O's page">
+<img src="" width=50% height=50% alt="Jarvis' page">
+<img src="" width=50% height=50% alt="Responses List">
 
 ## Tech Stack
 
@@ -91,7 +94,7 @@ Run locally:
 ## Next Steps
 
 I believe the application can be improved further. Given more time, I would have added more types of "bots" that would
-do more than giving the right answers or answering sarcastically and reluctantly. The Open AI API has wide range of interesting
+do more than giving the right answers or answering sarcastically and reluctantly. The Open AI API has a wide range of interesting
 completions that would make for cool bots such as a movie to emoji translator or an Analogy maker. Another feature I would add would be a temperature slider. This feature would enable the user to change the amount of "Risks" the AI takes in the model, leading to a narrower or wider range of potential answers.
 
 ## Contact
