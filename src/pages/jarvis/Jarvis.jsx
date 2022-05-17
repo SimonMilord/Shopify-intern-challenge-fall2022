@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 const jarvisProfile = {
   name: "Jarvis",
-  title: "Jarvis, the (a lot more helpful) bot",
+  title: "Jarvis, the (more helpful) bot",
   subtitle: "Enter a prompt for Jarvis",
 };
 

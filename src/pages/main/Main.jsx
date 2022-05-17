@@ -21,10 +21,10 @@ export default function Main(props) {
         <h2 className="main__subtitle">Choose a bot and ask away!</h2>
       </div>
       <section className="card-box">
-        <Link to="/awesomo" className="cardLink">
+        <Link to="/awesomo" className="cardLink" name="awesom-o">
           <BotCard name={"Awesom-O"} picture={awesomOPic} />
         </Link>
-        <Link to="/jarvis" className="cardLink">
+        <Link to="/jarvis" className="cardLink" name="jarvis">
           <BotCard name={"Jarvis"} picture={jarvisPic} />
         </Link>
       </section>

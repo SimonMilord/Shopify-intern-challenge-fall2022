@@ -5,7 +5,7 @@
   margin: 0 auto;
   @include display-flex(column, center, center);
   @include tablet {
-    @include display-flex(column, center, flex-start);
+    // @include display-flex(column, center, flex-start);
   }
   &__title {
     @include title;
@@ -17,7 +17,7 @@
   &__item {
     background-color: $dark-primary;
     color: $white;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     border-radius: $radius;
     border: 1px solid $accent-color;
   }

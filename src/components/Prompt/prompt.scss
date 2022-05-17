@@ -31,7 +31,7 @@
     padding: 10px;
     height: 30vh;
     font-family: $main-font-regular;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     border-radius: $radius;
     border-color: $light-primary;
     color: $light-primary;
@@ -69,6 +69,9 @@
     button {
       font-family: $main-font-regular;
       @include btn;
+      @include tablet {
+        margin-bottom: 1rem;
+      }
     }
   }
 }
