@@ -99,3 +99,6 @@ completions that would make for cool bots such as a movie to emoji translator or
 This web app was designed and developed by Simon Milord.
 
 Feel free to follow me on [Github](https://github.com/SimonMilord) or [LinkedIn](https://www.linkedin.com/in/simonmilord/)
+
+
+PS: Did you find the easter egg?
